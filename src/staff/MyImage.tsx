@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { useDelayNextChildren } from '../hooks';
+import { useDelayNextChildren } from './hooks';
 
 const MyImage = ({ delay, address }: any) =>
   useDelayNextChildren(

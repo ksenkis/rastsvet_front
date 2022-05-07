@@ -4,8 +4,9 @@ import Footer from '../Footer/Footer';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import { Wrapper, Content } from './styled';
+import { LayoutProps } from './types';
 
-function Layout(props: any) {
+function Layout(props: LayoutProps) {
   return (
     <React.Fragment>
       <CssBaseline />

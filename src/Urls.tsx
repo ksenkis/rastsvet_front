@@ -7,12 +7,13 @@ import Login from './views/Login/Login';
 import Gallery from './views/Gallery/Gallery';
 import Algorithm from './views/Algorithm/Algorithm';
 import ImageColorization from './views/ImageColorization/ImageColorization';
+import { AppProps, RouteProps } from './types';
 
 // A wrapper for <Route> that redirects to the login screen if you're not yet authenticated.
-function PrivateRoute({ isAuthenticated, children }: any) {
+function PrivateRoute({ isAuthenticated, children }: RouteProps) {
   const location = useLocation();
   return isAuthenticated ? (
-    children
+    <>{children}</>
   ) : (
     <Navigate
       to={{
@@ -23,7 +24,7 @@ function PrivateRoute({ isAuthenticated, children }: any) {
   );
 }
 
-function Urls(props: any) {
+function Urls(props: AppProps) {
   return (
     <div>
       <BrowserRouter>

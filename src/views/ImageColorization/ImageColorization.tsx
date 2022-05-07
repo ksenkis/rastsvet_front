@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Input, Typography, Grid } from '@mui/material';
-import * as settings from '../../settings';
-import axios from 'axios';
-import MyImage from '../../components/MyImage';
-import { PhotoCamera } from '@mui/icons-material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
+import * as settings from '../../settings';
 import sunburst from '../../images/sunburst.png';
 import {
   ImageForm,
@@ -28,7 +26,8 @@ const ImageColorization = () => {
   const [prediction1, setPrediction1] = React.useState(prediction);
   const [myTime, setMyTime] = React.useState(undefined);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e);
     setState({
       title: e.target.value,
       image: state.image,
@@ -56,7 +55,6 @@ const ImageColorization = () => {
         },
       })
       .then((res) => {
-        // console.log(res.data);
         setPrediction(res.data.image);
         setPrediction1(res.data.image.slice(19));
         //@ts-ignore

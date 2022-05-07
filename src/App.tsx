@@ -6,6 +6,7 @@ import Layout from './components/Layout/Layout';
 import * as actions from './store/authActions';
 import Urls from './Urls';
 import { Wrapper } from './styled';
+import { StateProps, AppProps } from './types';
 
 const theme = createTheme({
   palette: {
@@ -46,7 +47,7 @@ const theme = createTheme({
   },
 });
 
-function App(props: any) {
+function App(props: AppProps) {
   // Similar to componentDidMount and componentDidUpdate:
   React.useEffect(() => {
     props.setAuthenticatedIfRequired();
@@ -64,7 +65,7 @@ function App(props: any) {
 }
 
 //This means that one or more of the redux states in the store are available as props
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: StateProps) => {
   return {
     isAuthenticated:
       state.auth.token !== null && typeof state.auth.token !== 'undefined',

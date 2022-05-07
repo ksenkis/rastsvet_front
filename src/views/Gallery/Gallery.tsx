@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as settings from '../../settings';
 import { Typography, Grid } from '@mui/material';
 
+import { ImageItem } from '../../types';
 import { Image } from './styled';
 
 const Gallery = () => {
@@ -24,7 +25,7 @@ const Gallery = () => {
         На данной странице представлены примеры работ сервиса Расцвет.
       </Typography>
       <Grid container justifyContent="center" rowSpacing={1} columnSpacing={2}>
-        {imagesMap.map((item: any, idx) => (
+        {imagesMap.map((item: ImageItem, idx) => (
           <Grid key={idx} item>
             <Image
               src={`http://localhost:8000/media/results/col_${item.image.slice(

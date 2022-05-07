@@ -1,23 +1,20 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { connect } from 'react-redux';
+
 import * as actions from '../../store/authActions';
-import { useNavigate, useLocation } from 'react-router-dom';
-
 import { Wrapper } from './styled';
+import { LoginProps } from './types';
 
-function Login(props: any) {
+function Login(props: LoginProps) {
   const [username, setuserName] = React.useState(null);
   const [password, setPassword] = React.useState(null);
 
@@ -51,8 +48,6 @@ function Login(props: any) {
 
     return '/';
   }, [location]);
-  // let location = useLocation();
-  // let { from } = location.state || { from: { pathname: '/' } };
 
   React.useEffect(() => {
     if (props.isAuthenticated) {
@@ -123,7 +118,7 @@ function Login(props: any) {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onAuth: (username: any, password: any) =>
+    onAuth: (username: string | null, password: string | null) =>
       dispatch(actions.authLogin(username, password)),
   };
 };

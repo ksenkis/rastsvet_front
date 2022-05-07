@@ -7,25 +7,18 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-import logo from './../images/logo.png';
-import mainLogo from '../../images/mainLogo.png';
-import sunburst from './../images/sunburst.png';
 import sunburst1 from '../../images/sunburst1.png';
 import { Logo } from './styled';
+import { TopBarProps } from './types';
 
 const pages = ['Главная', 'Раскрасить изображение', 'Галерея', 'Об алгоритме'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const links = ['', 'image/', 'gallery/', 'algorithm/'];
 
-const TopBar = (props: any) => {
+const TopBar = (props: TopBarProps) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [menuClosed, setMenuClosed] = useState(true);
-  // const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event: any) => {
     setAnchorElNav(event.currentTarget);
@@ -115,7 +108,6 @@ const TopBar = (props: any) => {
           >
             {pages.map((page, idx) => (
               <Button
-                // color="inherit"
                 key={page}
                 onClick={() => handleRedirect(idx)}
                 sx={{
@@ -137,36 +129,6 @@ const TopBar = (props: any) => {
               Выйти
             </Button>
           ) : null}
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

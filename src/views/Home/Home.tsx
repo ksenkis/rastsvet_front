@@ -11,6 +11,7 @@ import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import * as settings from '../../settings';
 import photoBoy from '../../images/photoBoy.png';
 import algorithm from '../../images/algorithm.png';
+import { ImageItem } from '../../types';
 import {
   Section,
   Text,
@@ -260,7 +261,7 @@ function Home() {
               ':hover': { opacity: '0.65', filter: 'alpha(opacity=100)' },
             }}
           />
-          {slider.map((item: any, idx) => (
+          {slider.map((item: ImageItem, idx) => (
             <Grid key={idx} item>
               <ImageGallery
                 src={`http://localhost:8000/media/results/col_${item.image.slice(
