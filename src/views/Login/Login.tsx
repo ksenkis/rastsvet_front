@@ -23,6 +23,7 @@ import { LoginProps } from './types';
 function Login(props: LoginProps) {
   const [username, setuserName] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoginFailed, setIsLoginFailed] = useState(false);
 
   const handleFormFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
     switch (event.target.id) {
@@ -40,6 +41,13 @@ function Login(props: LoginProps) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     props.onAuth(username, password);
+    if (props.isAuthenticated) {
+      setIsLoginFailed(false);
+    } else {
+      setTimeout(function () {
+        setIsLoginFailed(true);
+      }, 300);
+    }
   };
 
   let navigate = useNavigate();
@@ -79,6 +87,11 @@ function Login(props: LoginProps) {
           <Typography component="h1" variant="h5">
             Вход
           </Typography>
+          {isLoginFailed && (
+            <Typography variant="body1" textAlign="center" color="red" mt={2}>
+              Неправильно введен логин или пароль
+            </Typography>
+          )}
           <Box
             component="form"
             onSubmit={handleSubmit}

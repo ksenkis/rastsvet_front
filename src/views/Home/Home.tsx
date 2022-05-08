@@ -258,7 +258,7 @@ function Home() {
               fontSize: 36,
               display: { xs: 'none', md: 'block' },
               transition: '.1s ease-in-out',
-              ':hover': { opacity: '0.65', filter: 'alpha(opacity=100)' },
+              ':hover': { color: '#f4df41' },
             }}
           />
           {slider.map((item: ImageItem, idx) => (
@@ -276,7 +276,7 @@ function Home() {
               fontSize: 36,
               display: { xs: 'none', md: 'block' },
               transition: '.1s ease-in-out',
-              ':hover': { opacity: '0.65', filter: 'alpha(opacity=100)' },
+              ':hover': { color: '#f4df41' },
             }}
           />
         </Grid>
