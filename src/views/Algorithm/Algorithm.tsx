@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Typography } from '@mui/material';
 
 import rgb from '../../images/rgb.jpeg';

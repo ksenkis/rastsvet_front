@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Input, Typography, Grid } from '@mui/material';
@@ -14,34 +14,38 @@ import {
   ResultImage,
   Wrapper,
   Results,
-  Images,
   SubmitSection,
   SubmitImage,
   Arrow,
 } from './styled';
+import { ImageColorizationProps } from './types';
 
 const ImageColorization = () => {
-  const [state, setState] = useState({ title: '', image: undefined });
-  const [prediction, setPrediction] = React.useState(null);
-  const [prediction1, setPrediction1] = React.useState(prediction);
-  const [myTime, setMyTime] = React.useState(undefined);
+  const [state, setState] = useState<ImageColorizationProps>({
+    title: '',
+    image: undefined,
+  });
+  const [prediction, setPrediction] = useState(null);
+  const [prediction1, setPrediction1] = useState(prediction);
+  const [myTime, setMyTime] = useState(undefined);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setState({
       title: e.target.value,
       image: state.image,
     });
   };
 
-  const handleImageChange = (e: any) => {
-    setState({
-      title: state.title,
-      image: e.target.files[0],
-    });
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e?.target?.files !== null && e.target.files[0]) {
+      setState({
+        title: state.title,
+        image: e.target.files[0],
+      });
+    }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let form_data = new FormData();
     //@ts-ignore

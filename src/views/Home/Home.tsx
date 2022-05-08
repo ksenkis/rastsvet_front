@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import axios from 'axios';
 import { Grid, Typography, Fab } from '@mui/material';
@@ -38,8 +38,8 @@ function Home() {
   };
 
   let url = settings.API_SERVER + '/api/predict/image/';
-  const [imagesMap, setImagesMap] = React.useState([]);
-  const [slider, setSlider] = React.useState([]);
+  const [imagesMap, setImagesMap] = useState([]);
+  const [slider, setSlider] = useState([]);
 
   useEffect(() => {
     axios.get(url).then((r) => {

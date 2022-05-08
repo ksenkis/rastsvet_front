@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as settings from '../../settings';
 import { Typography, Grid } from '@mui/material';
@@ -8,7 +8,7 @@ import { Image } from './styled';
 
 const Gallery = () => {
   let url = settings.API_SERVER + '/api/predict/image/';
-  const [imagesMap, setImagesMap] = React.useState([]);
+  const [imagesMap, setImagesMap] = useState([]);
 
   useEffect(() => {
     axios.get(url).then((r) => {

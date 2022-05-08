@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { connect } from 'react-redux';
 
@@ -49,7 +49,7 @@ const theme = createTheme({
 
 function App(props: AppProps) {
   // Similar to componentDidMount and componentDidUpdate:
-  React.useEffect(() => {
+  useEffect(() => {
     props.setAuthenticatedIfRequired();
   }, []);
 

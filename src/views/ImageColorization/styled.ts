@@ -21,7 +21,6 @@ export const SubmitButton = styled(Button)({
 export const SubmitSection = styled('div')({
   display: 'flex',
   alignItems: 'center',
-  // height: '66vh',
 });
 
 export const SubmitImage = styled('img')({
@@ -40,21 +39,8 @@ export const Results = styled('div')({
   marginTop: 64,
 });
 
-export const Images = styled('div')({
-  display: 'flex',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  marginBottom: 30,
-});
-
 export const OriginalImage = styled('img')({
-  //   height: '50vh',
-  // width: '25vw',
-  // marginLeft: 120,
   width: 369,
 });
 
-export const ResultImage = styled('img')({
-  //   height: '60vh',
-  // width: '25vw',
-});
+export const ResultImage = styled('img')({});

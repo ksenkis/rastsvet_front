@@ -1,4 +1,10 @@
-import * as React from 'react';
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  ChangeEvent,
+  FormEvent,
+} from 'react';
 import { connect } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
@@ -15,10 +21,10 @@ import { Wrapper } from './styled';
 import { LoginProps } from './types';
 
 function Login(props: LoginProps) {
-  const [username, setuserName] = React.useState(null);
-  const [password, setPassword] = React.useState(null);
+  const [username, setuserName] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleFormFieldChange = (event: any) => {
+  const handleFormFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
     switch (event.target.id) {
       case 'username':
         setuserName(event.target.value);
@@ -31,7 +37,7 @@ function Login(props: LoginProps) {
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     props.onAuth(username, password);
   };
@@ -39,7 +45,7 @@ function Login(props: LoginProps) {
   let navigate = useNavigate();
   const location = useLocation();
 
-  const navigatePathname = React.useMemo(() => {
+  const navigatePathname = useMemo(() => {
     const state = location.state as { from: Location };
 
     if (state && state.from) {
@@ -49,7 +55,7 @@ function Login(props: LoginProps) {
     return '/';
   }, [location]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.isAuthenticated) {
       navigate(navigatePathname);
     }
